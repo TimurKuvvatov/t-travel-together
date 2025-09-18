@@ -18,7 +18,7 @@ type Expense = {
 };
 
 const tabs: FinanceTab[] = [
-	{ key: 'statistics', label: 'Статистика' },
+	{ key: 'finance', label: 'Статистика' },
 	{ key: 'expenses', label: 'Расходы' },
 	{ key: 'debts', label: 'Долги' }
 ];
