@@ -4,8 +4,6 @@ import Button from '@/shared/ui/Button/Button';
 import Layout from '@/shared/ui/Layout/Layout';
 import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
 
-import styles from './DebtsPage.module.scss';
-
 type ButtonKey = 'my' | 'all';
 
 const buttons: { key: ButtonKey; label: string }[] = [
@@ -13,7 +11,31 @@ const buttons: { key: ButtonKey; label: string }[] = [
 	{ key: 'all', label: 'Все долги' }
 ];
 
-const DebtItem = ({ debt }) => {
+type Debt = {
+	id: number;
+	name: string;
+	amount: number;
+	currency: string;
+	date: string;
+	type: 'owedToYou' | 'youOwe';
+	reminder: boolean;
+};
+
+type AllDebt = {
+	id: number;
+	debtor: string;
+	creditor: string;
+	amount: number;
+	currency: string;
+	date: string;
+	status: 'active' | 'closed';
+};
+
+type DebtItemProps = {
+	debt: Debt;
+};
+
+const DebtItem = ({ debt }: DebtItemProps) => {
 	const isOwedToYou = debt.type === 'owedToYou';
 
 	return (
@@ -76,70 +98,72 @@ const DebtItem = ({ debt }) => {
 	);
 };
 
-const DebtItemInAllDebts = ({ debt }) => {
-	return (
+type DebtItemInAllDebtsProps = {
+	debt: AllDebt;
+};
+
+const DebtItemInAllDebts = ({ debt }: DebtItemInAllDebtsProps) => (
+	<div
+		style={{
+			backgroundColor: '#fff',
+			borderRadius: '16px',
+			padding: '20px',
+			boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+			border: '1px solid #e8e8e8'
+		}}>
 		<div
 			style={{
-				backgroundColor: '#fff',
-				borderRadius: '16px',
-				padding: '20px',
-				boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-				border: '1px solid #e8e8e8'
+				display: 'flex',
+				justifyContent: 'space-between',
+				alignItems: 'center',
+				marginBottom: '12px'
 			}}>
-			<div
+			<span
 				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					marginBottom: '12px'
+					fontSize: '16px',
+					fontWeight: '500'
 				}}>
-				<span
-					style={{
-						fontSize: '16px',
-						fontWeight: '500'
-					}}>
-					{debt.debtor} должен {debt.creditor}
-				</span>
-				<span
-					style={{
-						fontSize: '18px',
-						fontWeight: '700'
-					}}>
-					{debt.amount} {debt.currency}
-				</span>
-			</div>
-
-			<div
+				{debt.debtor} должен {debt.creditor}
+			</span>
+			<span
 				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center'
+					fontSize: '18px',
+					fontWeight: '700'
 				}}>
-				<span
-					style={{
-						fontSize: '14px',
-						color: '#8e8e93'
-					}}>
-					{debt.date}
-				</span>
-
-				<Button>Детали</Button>
-			</div>
+				{debt.amount} {debt.currency}
+			</span>
 		</div>
-	);
-};
+
+		<div
+			style={{
+				display: 'flex',
+				justifyContent: 'space-between',
+				alignItems: 'center'
+			}}>
+			<span
+				style={{
+					fontSize: '14px',
+					color: '#8e8e93'
+				}}>
+				{debt.date}
+			</span>
+
+			<Button>Детали</Button>
+		</div>
+	</div>
+);
 
 const DebtsPage = () => {
 	const [active, setActive] = useState<ButtonKey>('my');
 
-	const debtsData = [
+	const debtsData: Debt[] = [
 		{
 			id: 1,
 			name: 'Слава',
 			amount: 5000,
 			currency: '₽',
 			date: '25.09.2025',
-			type: 'owedToYou', // вам должны
+			type: 'owedToYou',
 			reminder: true
 		},
 		{
@@ -148,7 +172,7 @@ const DebtsPage = () => {
 			amount: 1000,
 			currency: '₽',
 			date: '20.09.2025',
-			type: 'owedToYou', // вам должны
+			type: 'owedToYou',
 			reminder: true
 		},
 		{
@@ -157,12 +181,12 @@ const DebtsPage = () => {
 			amount: 1500,
 			currency: '₽',
 			date: '19.09.2025',
-			type: 'youOwe', // вы должны
+			type: 'youOwe',
 			reminder: false
 		}
 	];
 
-	const allDebtsData = [
+	const allDebtsData: AllDebt[] = [
 		{
 			id: 1,
 			debtor: 'Гриша',
