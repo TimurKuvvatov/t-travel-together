@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Header from '@/widgets/header/ui/Header';
+
 import arrowUpSvg from '../../assets/arrow-up.svg';
 
 import styles from './ChatPage.module.scss';
@@ -62,6 +64,7 @@ const ChatPage = () => {
 
 	return (
 		<div className={styles.chat}>
+			<Header />
 			<div className={styles.history}>
 				{messages.map(m => (
 					<div
