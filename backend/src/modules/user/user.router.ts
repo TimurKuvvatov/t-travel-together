@@ -21,24 +21,5 @@ UserRouter.delete('/:id', async (req, res) => {
     await userController.delete(req, res);
 });
 
-UserRouter.put('/:id/block', async (req, res) => {
-    await userController.block(req, res);
-});
-
-UserRouter.put('/:id/unblock', async (req, res) => {
-    await userController.unblock(req, res);
-});
-
-UserRouter.put('/:id/set-admin', async (req, res) => {
-    await userController.setAdmin(req, res);
-});
-
-UserRouter.put('/:id/unset-admin', async (req, res) => {
-    await userController.unsetAdmin(req, res);
-});
-
-UserRouter.put('/:id/reset-password', async (req, res) => {
-    await userController.resetPassword(req, res);
-});
 
 export default UserRouter;
