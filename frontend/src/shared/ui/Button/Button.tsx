@@ -5,10 +5,16 @@ import styles from './Button.module.scss';
 type ButtonProps = {
 	color?: 'gray' | 'default';
 	children: ReactNode;
+	className?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({ color = 'default', children, ...rest }: ButtonProps) => {
-	const buttonClasses = [styles.button, styles[color]]
+const Button = ({
+	color = 'default',
+	children,
+	className,
+	...rest
+}: ButtonProps) => {
+	const buttonClasses = [styles.button, styles[color], className]
 		.filter(Boolean)
 		.join(' ');
 
