@@ -1,0 +1,12 @@
+@use './normalize';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Product Sans', sans-serif;
+  font-weight: 500;
+}
