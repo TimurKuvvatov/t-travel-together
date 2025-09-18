@@ -1,3 +1,4 @@
+import ChatPage from '@/pages/chat/ChatPage';
 import DebtsPage from '@/pages/debts/ui/DebtsPage';
 import ExpensesPage from '@/pages/expenses/ui/ExpensesPage';
 import ExpenseNewPage from '@/pages/expenses-new/ui/ExpenseNewPage';
@@ -11,5 +12,6 @@ export const routes = [
 	{ path: '/expenses', element: <ExpensesPage /> },
 	{ path: '/expenses/new', element: <ExpenseNewPage /> },
 	{ path: '/invite', element: <InvitePage /> },
-	{ path: '/debts', element: <DebtsPage /> }
+	{ path: '/debts', element: <DebtsPage /> },
+	{ path: '/chat', element: <ChatPage /> }
 ];
