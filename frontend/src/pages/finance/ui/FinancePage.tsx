@@ -6,7 +6,7 @@ import Button from '@/shared/ui/Button/Button';
 import Layout from '@/shared/ui/Layout/Layout';
 import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
 
-import styles from './StatisticsPage.module.scss';
+import styles from './FinancePage.module.scss';
 
 type ButtonKey = 'stat' | 'expenses' | 'debts';
 
@@ -16,7 +16,7 @@ const buttons: { key: ButtonKey; label: string }[] = [
 	{ key: 'debts', label: 'Долги' }
 ];
 
-const StatisticsPage = () => {
+const FinancePage = () => {
 	const [active, setActive] = useState<ButtonKey>('stat');
 
 	const chartData = [
@@ -33,7 +33,6 @@ const StatisticsPage = () => {
 	const totalBudget = 50000;
 
 	return (
-		// <section className={styles.section}>
 		<Layout>
 			<div className={styles.page}>
 				<SectionTitle>Финансы</SectionTitle>
@@ -169,7 +168,6 @@ const StatisticsPage = () => {
 						Траты на категории
 					</h2>
 
-					{/* Прогресс-бар */}
 					<div
 						style={{
 							height: '20px',
@@ -207,7 +205,6 @@ const StatisticsPage = () => {
 						})}
 					</div>
 
-					{/* Подписи категорий */}
 					<div className={styles.statsList}>
 						{progressData.map(item => (
 							<div
@@ -231,8 +228,7 @@ const StatisticsPage = () => {
 				</section>
 			</div>
 		</Layout>
-		// </section>
 	);
 };
 
-export default StatisticsPage;
+export default FinancePage;

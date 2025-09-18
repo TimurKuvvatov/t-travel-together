@@ -1,9 +1,9 @@
-.inputWrapper {
+.selectWrapper {
 	position: relative;
 	margin-bottom: 16px;
 }
 
-.input {
+.select {
 	width: 100%;
 	padding: 8px 15px;
 	font-size: 16px;
@@ -11,14 +11,16 @@
 	transition: border-color 0.2s ease;
 	border: none;
 	background: #ecf1f7;
+	appearance: none;
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
 
 	&.withLabel {
 		padding-top: 24px;
-		&::placeholder {
-			color: transparent;
-		}
+
 		&:focus + .label,
-		&:not(:placeholder-shown) + .label {
+		&:not([value='']) + .label {
 			top: 7px;
 			font-size: 12px;
 		}
@@ -28,6 +30,10 @@
 		display: flex;
 		align-items: center;
 		padding-top: 8px;
+	}
+
+	&:focus {
+		outline: none;
 	}
 }
 
@@ -40,4 +46,24 @@
 	pointer-events: none;
 	transition: 0.2s ease all;
 	padding: 0 4px;
+	z-index: 3;
+}
+
+.arrow {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	z-index: 1;
+
+	.withLabel + & {
+		top: calc(50% + 8px);
+	}
+}
+
+.select option {
+	background: white;
+	color: #333;
+	padding: 8px;
 }
