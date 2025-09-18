@@ -5,3 +5,91 @@
 	gap: 10px;
 	margin-top: 20px;
 }
+
+.budgetHeader {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.budgetAmount {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: -10px;
+	color: var(--text-primary);
+}
+
+.chartContainer {
+	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.legendDots {
+	display: flex;
+	gap: 8px;
+	justify-content: center;
+}
+
+.legendDot {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	cursor: pointer;
+
+	&Primary {
+		background-color: #ffdd2d;
+	}
+
+	&Secondary {
+		background-color: #d9d9d9;
+	}
+}
+
+.statsList {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	// gap: 12px;
+}
+
+.statItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 0;
+}
+
+.statLabel {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 14px;
+	color: var(--text-primary);
+}
+
+.colorIndicator {
+	width: 20px;
+	height: 20px;
+	border-radius: 5px;
+	display: inline-block;
+
+	&Remaining {
+		background-color: #ff962d;
+	}
+
+	&Actual {
+		background-color: #ffdd2d;
+	}
+}
+
+.statValue {
+	font-weight: 600;
+	color: var(--text-primary);
+}

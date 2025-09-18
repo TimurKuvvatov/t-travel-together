@@ -1,12 +1,13 @@
 @use './normalize';
+@use '../shared/fonts/stylesheet.scss' as *;
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 body {
-  font-family: 'Product Sans', sans-serif;
-  font-weight: 500;
+	font-family: 'Tinkoff Sans', 'Product Sans', sans-serif;
+	font-weight: 500;
 }
