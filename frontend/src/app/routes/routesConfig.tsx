@@ -1,5 +1,6 @@
 import ChatPage from '@/pages/chat/ChatPage';
 import DebtsPage from '@/pages/debts/ui/DebtsPage';
+import ExpensePage from '@/pages/expense/ui/ExpensePage';
 import ExpensesPage from '@/pages/expenses/ui/ExpensesPage';
 import ExpenseNewPage from '@/pages/expenses-new/ui/ExpenseNewPage';
 import FinalPage from '@/pages/final/ui/FinalPage';
@@ -11,6 +12,7 @@ import ServicesPage from '@/pages/services/ui/ServicesPage';
 export const routes = [
 	{ path: '/', element: <MainPage /> },
 	{ path: '/finance', element: <FinancePage /> },
+	{ path: '/expense', element: <ExpensePage /> },
 	{ path: '/expenses', element: <ExpensesPage /> },
 	{ path: '/expenses/new', element: <ExpenseNewPage /> },
 	{ path: '/invite', element: <InvitePage /> },

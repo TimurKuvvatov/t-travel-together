@@ -1,0 +1,55 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: start;
+	justify-content: start;
+	.fields {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 12px;
+		.field {
+			.users {
+				margin-top: 6px;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+				.user {
+					width: 100%;
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+					padding: 12px;
+					background: #ecf1f7;
+					border-radius: 7px;
+					.info {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						gap: 5px;
+						.status {
+							border-radius: 10px;
+							width: 34px;
+							height: 34px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							&.pending {
+								background: #ffdc2d7c;
+							}
+							&.paid {
+								background: rgba(58, 197, 65, 0.5);
+							}
+							img {
+								width: 30px;
+								height: 30px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

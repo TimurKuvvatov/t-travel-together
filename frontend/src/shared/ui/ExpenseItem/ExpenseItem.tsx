@@ -1,5 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import styles from './ExpenseItem.module.scss';
 
 type ExpenseItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -14,16 +16,27 @@ const ExpenseItem = ({
 	amount,
 	className,
 	...rest
-}: ExpenseItemProps) => (
-	<button
-		className={`${styles.expenseItem} ${className || ''}`}
-		{...rest}>
-		<label className={styles.label}>{author}</label>
-		<div className={styles.content}>
-			<span className={styles.title}>{title}</span>
-			<span className={styles.amount}>{amount.toLocaleString('ru-RU')} ₽</span>
-		</div>
-	</button>
-);
+}: ExpenseItemProps) => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate(`/expense`);
+	};
+
+	return (
+		<button
+			onClick={handleClick}
+			className={`${styles.expenseItem} ${className || ''}`}
+			{...rest}>
+			<label className={styles.label}>{author}</label>
+			<div className={styles.content}>
+				<span className={styles.title}>{title}</span>
+				<span className={styles.amount}>
+					{amount.toLocaleString('ru-RU')} ₽
+				</span>
+			</div>
+		</button>
+	);
+};
 
 export default ExpenseItem;
