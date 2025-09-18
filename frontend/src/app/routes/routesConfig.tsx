@@ -1,3 +1,4 @@
+import DebtsPage from '@/pages/debts/ui/DebtsPage';
 import ExpensesPage from '@/pages/expenses/ui/ExpensesPage';
 import ExpenseNewPage from '@/pages/expenses-new/ui/ExpenseNewPage';
 import InvitePage from '@/pages/invite/ui/InvitePage';
@@ -9,5 +10,6 @@ export const routes = [
 	{ path: '/statistics', element: <StatisticsPage /> },
 	{ path: '/expenses', element: <ExpensesPage /> },
 	{ path: '/expenses/new', element: <ExpenseNewPage /> },
-	{ path: '/invite', element: <InvitePage /> }
+	{ path: '/invite', element: <InvitePage /> },
+	{ path: '/debts', element: <DebtsPage /> }
 ];
