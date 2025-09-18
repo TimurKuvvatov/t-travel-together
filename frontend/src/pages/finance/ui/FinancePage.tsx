@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 import Layout from '@/shared/ui/Layout/Layout';
@@ -13,13 +15,7 @@ const tabs: FinanceTab[] = [
 	{ key: 'debts', label: 'Долги' }
 ];
 
-<<<<<<< HEAD:frontend/src/pages/finance/ui/FinancePage.tsx
 const FinancePage = () => {
-	const [active, setActive] = useState<ButtonKey>('stat');
-
-=======
-const StatisticsPage = () => {
->>>>>>> cab9270a45e94166ebb309505f5e958855750704:frontend/src/pages/statistics/ui/StatisticsPage.tsx
 	const chartData = [
 		{ name: 'Остаток', value: 15000, color: '#FF962D' },
 		{ name: 'Фактический бюджет', value: 35000, color: '#FFDD2D' }
