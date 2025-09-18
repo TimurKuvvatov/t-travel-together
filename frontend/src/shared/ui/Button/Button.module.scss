@@ -9,7 +9,7 @@
 	font-size: 14px;
 	line-height: 140%;
 	cursor: pointer;
-	transition: all 0.2s ease-in;
+	// transition: all 0.2s ease-in;
 	outline: none;
 	-webkit-tap-highlight-color: transparent;
 	background: #ffdd2d;
@@ -17,7 +17,25 @@
 		opacity: 0.7;
 	}
 
-	&:active {
-		transform: translateY(2px);
+	// &:active {
+	// 	transform: translateY(2px);
+	// }
+}
+
+.default {
+	background-color: #ffdd2d;
+	color: #000;
+
+	&:hover:not(:disabled) {
+		opacity: 0.7;
+	}
+}
+
+.gray {
+	background-color: #f3f3f3;
+	color: #000;
+
+	&:hover:not(:disabled) {
+		background-color: #c8c8c8;
 	}
 }
