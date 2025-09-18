@@ -5,16 +5,17 @@ import styles from './Input.module.scss';
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label?: string;
 	id?: string;
+	className?: string;
 };
 
-const Input = ({ label, id, ...rest }: InputProps) => {
+const Input = ({ label, id, className, ...rest }: InputProps) => {
 	const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
 	return (
 		<div className={styles.inputWrapper}>
 			<input
 				id={inputId}
-				className={`${styles.input} ${label ? styles.withLabel : styles.noLabel}`}
+				className={`${styles.input} ${label ? styles.withLabel : styles.noLabel} ${className || ''}`}
 				placeholder={label ? ' ' : undefined}
 				{...rest}
 			/>

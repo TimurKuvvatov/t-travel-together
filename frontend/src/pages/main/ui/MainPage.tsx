@@ -1,5 +1,7 @@
 import { useState, type ChangeEvent } from 'react';
 
+import { useNavigate } from 'react-router';
+
 import type { User } from '@/entities/user/model/types';
 import Button from '@/shared/ui/Button/Button';
 import Input from '@/shared/ui/Input/Input';
@@ -49,6 +51,7 @@ const MainPage = () => {
 			createdAt: new Date()
 		}
 	];
+	const navigate = useNavigate();
 
 	return (
 		<section className={styles.section}>
@@ -90,7 +93,9 @@ const MainPage = () => {
 					onChange={handleChange}
 				/>
 				<div className={styles.members}>
-					<Button>Добавить участников</Button>
+					<Button onClick={() => navigate('invite')}>
+						Добавить участников
+					</Button>
 					<div className={styles.userList}>
 						<Subtitle>Участники</Subtitle>
 						<UserList users={users} />

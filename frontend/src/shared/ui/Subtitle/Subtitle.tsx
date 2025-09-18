@@ -4,10 +4,11 @@ import styles from './Subtitle.module.scss';
 
 type SubtitleProps = {
 	children: ReactNode;
+	className?: string;
 };
 
-const Subtitle = ({ children }: SubtitleProps) => (
-	<h2 className={styles.subtitle}>{children}</h2>
+const Subtitle = ({ children, className }: SubtitleProps) => (
+	<h2 className={`${styles.subtitle} ${className || ''}`}>{children}</h2>
 );
 
 export default Subtitle;
