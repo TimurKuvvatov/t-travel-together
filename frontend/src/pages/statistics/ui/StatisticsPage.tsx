@@ -33,6 +33,7 @@ const StatisticsPage = () => {
 	const totalBudget = 50000;
 
 	return (
+		// <section className={styles.section}>
 		<Layout>
 			<div className={styles.page}>
 				<SectionTitle>Финансы</SectionTitle>
@@ -230,6 +231,7 @@ const StatisticsPage = () => {
 				</section>
 			</div>
 		</Layout>
+		// </section>
 	);
 };
 
