@@ -5,15 +5,15 @@ import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
 import type { FinanceTab } from '@/widgets/finance-nav/ui/FinanceNav';
 import FinanceNav from '@/widgets/finance-nav/ui/FinanceNav';
 
-import styles from './StatisticsPage.module.scss';
+import styles from './FinancePage.module.scss';
 
 const tabs: FinanceTab[] = [
-	{ key: 'statistics', label: 'Статистика' },
+	{ key: 'finance', label: 'Статистика' },
 	{ key: 'expenses', label: 'Расходы' },
 	{ key: 'debts', label: 'Долги' }
 ];
 
-const StatisticsPage = () => {
+const FinancePage = () => {
 	const chartData = [
 		{ name: 'Остаток', value: 15000, color: '#FF962D' },
 		{ name: 'Фактический бюджет', value: 35000, color: '#FFDD2D' }
@@ -28,7 +28,6 @@ const StatisticsPage = () => {
 	const totalBudget = 50000;
 
 	return (
-		// <section className={styles.section}>
 		<Layout>
 			<div className={styles.page}>
 				<SectionTitle>Финансы</SectionTitle>
@@ -99,67 +98,72 @@ const StatisticsPage = () => {
 					</div>
 				</section>
 
-				{/* Категории */}
-				<section
-					style={{ marginTop: '40px' }}
-					aria-labelledby='categories-heading'>
-					<h2
-						id='categories-heading'
-						className={styles.budgetHeader}>
-						Траты на категории
-					</h2>
-					<div
-						style={{
-							height: '20px',
-							backgroundColor: '#D9D9D9',
-							borderRadius: '10px',
-							overflow: 'hidden',
-							display: 'flex'
-						}}>
-						{progressData.map((item, index) => {
-							const left = progressData
-								.slice(0, index)
-								.reduce((sum, i) => sum + i.value, 0);
+				<h2
+					id='categories-heading'
+					className={styles.budgetHeader}>
+					Интерасный факт!
+				</h2>
 
-							return (
-								<div
-									key={item.name}
-									style={{
-										width: `${item.value}%`,
-										backgroundColor: item.color,
-										position: 'absolute',
-										left: `${left}%`
-									}}
-								/>
-							);
-						})}
-					</div>
-					<div className={styles.statsList}>
-						{progressData.map(item => (
+				<div
+					style={{
+						height: '20px',
+						backgroundColor: '#D9D9D9',
+						borderRadius: '10px',
+						margin: '20px 0',
+						overflow: 'hidden',
+						position: 'relative',
+						display: 'flex'
+					}}>
+					{progressData.map((item, index) => {
+						const isFirst = index === 0;
+						const isLast = index === progressData.length - 1;
+						const left = progressData
+							.slice(0, index)
+							.reduce((sum, i) => sum + i.value, 0);
+
+						return (
 							<div
 								key={item.name}
-								className={styles.statItem}>
-								<div className={styles.statLabel}>
-									<div
-										style={{
-											backgroundColor: item.color,
-											width: '20px',
-											height: '20px',
-											borderRadius: '5px',
-											marginRight: '8px'
-										}}
-									/>
-									<span>{item.name}</span>
-								</div>
-								<span className={styles.statValue}>{item.value}%</span>
+								style={{
+									width: `${item.value}%`,
+									height: '100%',
+									backgroundColor: item.color,
+									position: 'absolute',
+									left: `${left}%`,
+									borderRadius: isFirst
+										? '10px 0 0 10px'
+										: isLast
+											? '0 10px 10px 0'
+											: '0'
+								}}
+							/>
+						);
+					})}
+				</div>
+
+				<div className={styles.statsList}>
+					{progressData.map(item => (
+						<div
+							key={item.name}
+							className={styles.statItem}>
+							<div className={styles.statLabel}>
+								<div
+									style={{
+										backgroundColor: item.color,
+										width: '20px',
+										height: '20px',
+										borderRadius: '5px',
+										marginRight: '8px'
+									}}></div>
+								<span>{item.name}</span>
 							</div>
-						))}
-					</div>
-				</section>
+							<span className={styles.statValue}>{item.value}%</span>
+						</div>
+					))}
+				</div>
 			</div>
 		</Layout>
-		// </section>
 	);
 };
 
-export default StatisticsPage;
+export default FinancePage;

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@/shared/ui/Button/Button';
 
 export type FinanceTab = {
-	key: 'statistics' | 'expenses' | 'debts';
+	key: 'finance' | 'expenses' | 'debts';
 	label: string;
 };
 

@@ -12,7 +12,7 @@ type FooterItem = {
 
 const footerItems: FooterItem[] = [
 	{ icon: <span>🏠</span>, label: 'Главная', link: '/' },
-	{ icon: <span>💰</span>, label: 'Финансы', link: '/statistics' },
+	{ icon: <span>💰</span>, label: 'Финансы', link: '/finance' },
 	{ icon: <span>💬</span>, label: 'Чат', link: '/chat' },
 	{ icon: <span>ℹ️</span>, label: 'Инфо', link: '/info' }
 ];

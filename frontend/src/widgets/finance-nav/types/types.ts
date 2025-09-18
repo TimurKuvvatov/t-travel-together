@@ -1,4 +1,4 @@
-export type FinanceTabKey = 'statistics' | 'expenses' | 'debts';
+export type FinanceTabKey = 'finance' | 'expenses' | 'debts';
 
 export type FinanceTab = {
 	key: FinanceTabKey;
