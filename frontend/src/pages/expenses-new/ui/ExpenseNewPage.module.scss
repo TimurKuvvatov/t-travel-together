@@ -1,0 +1,47 @@
+.title {
+	margin-bottom: 14px;
+}
+
+.form {
+	.check {
+		width: 280px;
+		height: 200px;
+		border: 2px dashed #e5e7eb;
+        margin: 0 auto;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+	}
+	.field {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		.subtitle {
+			margin-bottom: 10px;
+		}
+		.options {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			label {
+				padding: 18px;
+				border: 1px solid #ecf1f7;
+				cursor: pointer;
+				border-radius: 7px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 12px;
+			}
+		}
+	}
+	.members {
+		margin: 10px 0;
+	}
+	button {
+		width: 100%;
+	}
+}
