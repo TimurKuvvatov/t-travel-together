@@ -1,7 +1,9 @@
+import InvitePage from '@/pages/invite/ui/InvitePage';
 import MainPage from '@/pages/main/ui/MainPage';
 import StatisticsPage from '@/pages/statistics/ui/StatisticsPage';
 
 export const routes = [
 	{ path: '/', element: <MainPage /> },
-	{ path: '/statistics', element: <StatisticsPage /> }
+	{ path: '/statistics', element: <StatisticsPage /> },
+	{ path: '/invite', element: <InvitePage /> }
 ];

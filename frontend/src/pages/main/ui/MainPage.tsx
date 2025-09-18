@@ -1,9 +1,14 @@
 import { useState, type ChangeEvent } from 'react';
 
+import { useNavigate } from 'react-router';
+
+import type { User } from '@/entities/user/model/types';
 import Button from '@/shared/ui/Button/Button';
 import Input from '@/shared/ui/Input/Input';
 import Layout from '@/shared/ui/Layout/Layout';
 import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
+import Subtitle from '@/shared/ui/Subtitle/Subtitle';
+import UserList from '@/widgets/user-list/ui/UserList';
 
 import styles from './MainPage.module.scss';
 
@@ -29,6 +34,24 @@ const MainPage = () => {
 			[name]: value
 		}));
 	};
+
+	const users: User[] = [
+		{
+			id: '1',
+			firstName: 'Тимур',
+			lastName: 'Не помню',
+			phone: '+7 123 456-37-89',
+			createdAt: new Date()
+		},
+		{
+			id: '1',
+			firstName: 'Гриша',
+			lastName: 'Не помню',
+			phone: '+7 123 435-67-89',
+			createdAt: new Date()
+		}
+	];
+	const navigate = useNavigate();
 
 	return (
 		<section className={styles.section}>
@@ -69,7 +92,15 @@ const MainPage = () => {
 					value={form.endDate}
 					onChange={handleChange}
 				/>
-				<Button>Добавить участников</Button>
+				<div className={styles.members}>
+					<Button onClick={() => navigate('invite')}>
+						Добавить участников
+					</Button>
+					<div className={styles.userList}>
+						<Subtitle>Участники</Subtitle>
+						<UserList users={users} />
+					</div>
+				</div>
 			</Layout>
 		</section>
 	);
