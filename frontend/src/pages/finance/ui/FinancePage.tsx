@@ -1,24 +1,25 @@
-import { useState } from 'react';
-
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
-import Button from '@/shared/ui/Button/Button';
 import Layout from '@/shared/ui/Layout/Layout';
 import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
+import type { FinanceTab } from '@/widgets/finance-nav/ui/FinanceNav';
+import FinanceNav from '@/widgets/finance-nav/ui/FinanceNav';
 
 import styles from './FinancePage.module.scss';
 
-type ButtonKey = 'stat' | 'expenses' | 'debts';
-
-const buttons: { key: ButtonKey; label: string }[] = [
-	{ key: 'stat', label: 'Статистика' },
+const tabs: FinanceTab[] = [
+	{ key: 'statistics', label: 'Статистика' },
 	{ key: 'expenses', label: 'Расходы' },
 	{ key: 'debts', label: 'Долги' }
 ];
 
+<<<<<<< HEAD:frontend/src/pages/finance/ui/FinancePage.tsx
 const FinancePage = () => {
 	const [active, setActive] = useState<ButtonKey>('stat');
 
+=======
+const StatisticsPage = () => {
+>>>>>>> cab9270a45e94166ebb309505f5e958855750704:frontend/src/pages/statistics/ui/StatisticsPage.tsx
 	const chartData = [
 		{ name: 'Остаток', value: 15000, color: '#FF962D' },
 		{ name: 'Фактический бюджет', value: 35000, color: '#FFDD2D' }
@@ -37,20 +38,7 @@ const FinancePage = () => {
 			<div className={styles.page}>
 				<SectionTitle>Финансы</SectionTitle>
 
-				<nav
-					className={styles.btnGroup}
-					aria-label='Финансовые разделы'>
-					{buttons.map(({ key, label }) => (
-						<Button
-							key={key}
-							onClick={() => setActive(key)}
-							type='button'
-							color={key === active ? 'default' : 'gray'}
-							aria-pressed={key === active}>
-							{label}
-						</Button>
-					))}
-				</nav>
+				<FinanceNav tabs={tabs} />
 
 				<section aria-labelledby='budget-heading'>
 					<h2
@@ -63,78 +51,35 @@ const FinancePage = () => {
 					</p>
 
 					<div className={styles.chartContainer}>
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-								width: '100%',
-								position: 'relative'
-							}}>
-							<ResponsiveContainer
-								width={200}
-								height={200}>
-								<PieChart>
-									<Pie
-										data={chartData}
-										cx='50%'
-										cy='50%'
-										innerRadius={60}
-										outerRadius={80}
-										dataKey='value'>
-										{chartData.map((entry, index) => (
-											<Cell
-												key={`cell-${index}`}
-												fill={entry.color}
-											/>
-										))}
-									</Pie>
-									<Tooltip
-										formatter={(value: number) => [
-											`${value.toLocaleString('ru-RU')} ₽`,
-											'Сумма'
-										]}
-									/>
-								</PieChart>
-							</ResponsiveContainer>
-
-							<svg
-								width='24'
-								height='24'
-								viewBox='0 0 24 24'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								style={{
-									position: 'absolute',
-									right: 'calc(50% - 120px)',
-									marginRight: '-40px',
-									cursor: 'pointer'
-								}}>
-								<path
-									d='M9 18L15 12L9 6'
-									stroke='#FFDD2D'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
+						<ResponsiveContainer
+							width={200}
+							height={200}>
+							<PieChart>
+								<Pie
+									data={chartData}
+									cx='50%'
+									cy='50%'
+									innerRadius={60}
+									outerRadius={80}
+									dataKey='value'>
+									{chartData.map((entry, index) => (
+										<Cell
+											key={index}
+											fill={entry.color}
+										/>
+									))}
+								</Pie>
+								<Tooltip
+									formatter={(value: number) => [
+										`${value.toLocaleString('ru-RU')} ₽`,
+										'Сумма'
+									]}
 								/>
-							</svg>
-						</div>
-
-						<div className={styles.legendDots}>
-							{chartData.map((item, index) => (
-								<div
-									key={index}
-									className={`${styles.legendDot} ${
-										index === 0
-											? styles.legendDotPrimary
-											: styles.legendDotSecondary
-									}`}
-									aria-label={item.name}
-								/>
-							))}
-						</div>
+							</PieChart>
+						</ResponsiveContainer>
 					</div>
 
+					{/* Статистика */}
 					<div className={styles.statsList}>
 						{chartData.map((item, index) => (
 							<div
@@ -142,12 +87,12 @@ const FinancePage = () => {
 								className={styles.statItem}>
 								<div className={styles.statLabel}>
 									<div
-										className={`${styles.colorIndicator} ${
-											index === 0
-												? styles.colorIndicatorRemaining
-												: styles.colorIndicatorActual
-										}`}
-										aria-hidden='true'
+										style={{
+											backgroundColor: item.color,
+											width: '20px',
+											height: '20px',
+											marginRight: '8px'
+										}}
 									/>
 									<span>{item.name}</span>
 								</div>
@@ -159,28 +104,24 @@ const FinancePage = () => {
 					</div>
 				</section>
 
+				{/* Категории */}
 				<section
-					aria-labelledby='categories-heading'
-					style={{ marginTop: '40px' }}>
+					style={{ marginTop: '40px' }}
+					aria-labelledby='categories-heading'>
 					<h2
 						id='categories-heading'
 						className={styles.budgetHeader}>
 						Траты на категории
 					</h2>
-
 					<div
 						style={{
 							height: '20px',
 							backgroundColor: '#D9D9D9',
 							borderRadius: '10px',
-							margin: '20px 0',
 							overflow: 'hidden',
-							position: 'relative',
 							display: 'flex'
 						}}>
 						{progressData.map((item, index) => {
-							const isFirst = index === 0;
-							const isLast = index === progressData.length - 1;
 							const left = progressData
 								.slice(0, index)
 								.reduce((sum, i) => sum + i.value, 0);
@@ -190,21 +131,14 @@ const FinancePage = () => {
 									key={item.name}
 									style={{
 										width: `${item.value}%`,
-										height: '100%',
 										backgroundColor: item.color,
 										position: 'absolute',
-										left: `${left}%`,
-										borderRadius: isFirst
-											? '10px 0 0 10px'
-											: isLast
-												? '0 10px 10px 0'
-												: '0'
+										left: `${left}%`
 									}}
 								/>
 							);
 						})}
 					</div>
-
 					<div className={styles.statsList}>
 						{progressData.map(item => (
 							<div
@@ -218,7 +152,8 @@ const FinancePage = () => {
 											height: '20px',
 											borderRadius: '5px',
 											marginRight: '8px'
-										}}></div>
+										}}
+									/>
 									<span>{item.name}</span>
 								</div>
 								<span className={styles.statValue}>{item.value}%</span>

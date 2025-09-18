@@ -1,3 +1,11 @@
 .layout {
-  padding: 42px 20px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	padding: 42px 20px;
+  margin-bottom: 60px;
+}
+
+.content {
+	flex: 1;
 }
