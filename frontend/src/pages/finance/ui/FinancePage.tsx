@@ -102,7 +102,7 @@ const FinancePage = () => {
 				<h2
 					id='categories-heading'
 					className={styles.budgetHeader}>
-					Интерасный факт!
+					Категории
 				</h2>
 
 				<div
