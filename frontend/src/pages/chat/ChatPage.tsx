@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import ExpenseMessage from '@/widgets/expense-message/ui/ExpenseMessage';
 import Header from '@/widgets/header/ui/Header';
 
 import arrowUpSvg from '../../assets/arrow-up.svg';
@@ -81,6 +82,7 @@ const ChatPage = () => {
 						<span className={styles.time}>{formatTime(m.createdAt)}</span>
 					</div>
 				))}
+				<ExpenseMessage />
 			</div>
 
 			<div className={styles.inputArea}>

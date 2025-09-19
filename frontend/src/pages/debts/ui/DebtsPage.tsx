@@ -3,12 +3,20 @@ import { useState } from 'react';
 import Button from '@/shared/ui/Button/Button';
 import Layout from '@/shared/ui/Layout/Layout';
 import SectionTitle from '@/shared/ui/SectionTitle/SectionTitle';
+import type { FinanceTab } from '@/widgets/finance-nav/ui/FinanceNav';
+import FinanceNav from '@/widgets/finance-nav/ui/FinanceNav';
 
 type ButtonKey = 'my' | 'all';
 
 const buttons: { key: ButtonKey; label: string }[] = [
 	{ key: 'my', label: 'Мои долги' },
 	{ key: 'all', label: 'Все долги' }
+];
+
+const tabs: FinanceTab[] = [
+	{ key: 'finance', label: 'Статистика' },
+	{ key: 'expenses', label: 'Расходы' },
+	{ key: 'debts', label: 'Долги' }
 ];
 
 type Debt = {
@@ -220,11 +228,11 @@ const DebtsPage = () => {
 		<Layout>
 			<SectionTitle>Финансы</SectionTitle>
 
+			<FinanceNav tabs={tabs} />
 			<div
 				style={{
 					backgroundColor: '#F0F1F3',
 					display: 'inline-block',
-					marginTop: 20,
 					padding: '8px 10px',
 					borderRadius: 10,
 					width: '100%'

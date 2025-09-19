@@ -1,0 +1,12 @@
+.message {
+    width: 200px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed gray;
+    border-radius: 14px;
+    margin: 10px auto;
+}

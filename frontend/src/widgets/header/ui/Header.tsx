@@ -8,15 +8,22 @@ import styles from './Header.module.scss';
 
 const Header = () => (
 	<header className={styles.header}>
-		<button>
-			<Link to='/'>
-				<img
-					src={arrowLeftSvg}
-					alt='back'
-				/>
+		<div className={styles.left}>
+			<button>
+				<Link to='/'>
+					<img
+						src={arrowLeftSvg}
+						alt='back'
+					/>
+				</Link>
+			</button>
+		</div>
+		<SectionTitle>Поездка Анапа</SectionTitle>
+		<button className={styles.expense}>
+			<Link to='/expenses'>
+				$
 			</Link>
 		</button>
-		<SectionTitle>Поездка Анапа</SectionTitle>
 	</header>
 );
 
