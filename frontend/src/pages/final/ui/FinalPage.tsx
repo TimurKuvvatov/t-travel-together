@@ -315,7 +315,7 @@ const FinalPage = () => {
 
 	const chartData: ChartItem[] = [
 		{ name: 'Остаток', value: 15000, color: '#FF962D' },
-		{ name: 'Фактический бюджет', value: 35000, color: '#FFDD2D' }
+		{ name: 'Расходы', value: 35000, color: '#FFDD2D' }
 	];
 
 	const debtsData: Debt[] = [
