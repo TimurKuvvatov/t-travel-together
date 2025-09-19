@@ -58,9 +58,7 @@ const ExpensePage = () => (
 						))}
 					</div>
 				</div>
-				{/* 	<Button style={{ background: '#27AE60', color: '#fff' }}>
-					Напомнить
-				</Button> */}
+				
 				<Button style={{ background: '#27AE60', color: '#fff' }}>
 					Принять
 				</Button>
