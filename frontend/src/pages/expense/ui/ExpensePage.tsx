@@ -58,12 +58,13 @@ const ExpensePage = () => (
 						))}
 					</div>
 				</div>
-				<Button style={{ background: '#27AE60', color: '#fff' }}>
+				{/* 	<Button style={{ background: '#27AE60', color: '#fff' }}>
 					Напомнить
+				</Button> */}
+				<Button style={{ background: '#27AE60', color: '#fff' }}>
+					Принять
 				</Button>
-				<Button style={{ background: '#ff3b30', color: '#fff' }}>
-					Оплатить долг
-				</Button>
+				<Button>Оспорить</Button>
 			</div>
 		</section>
 	</Layout>
