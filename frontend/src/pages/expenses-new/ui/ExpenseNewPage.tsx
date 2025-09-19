@@ -59,12 +59,14 @@ const ExpenseNewPage = () => (
 						</label>
 					</div>
 				</div>
-
-				<div className={styles.members}>
-					<TextButton>Добавить участников</TextButton>
-				</div>
-				<Button>Создать</Button>
 			</form>
+
+			<div className={styles.members}>
+				<TextButton onClick={() => console.log('Add member')}>
+					Добавить участников
+				</TextButton>
+			</div>
+			<Button style={{width: '100%'}}>Создать</Button>
 		</Layout>
 		<Outlet />
 	</>
