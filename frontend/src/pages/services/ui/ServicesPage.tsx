@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 import Button from '@/shared/ui/Button/Button';
 import Input from '@/shared/ui/Input/Input';
@@ -17,12 +17,12 @@ const buttons: { key: ButtonKey; label: string }[] = [
 	{ key: 'transport', label: 'Транспорт' }
 ];
 
-interface SearchFormState {
+type SearchFormState = {
 	from: string;
 	to: string;
 	departureDate: string;
 	passengers: string;
-}
+};
 
 const initialSearchFormState: SearchFormState = {
 	from: 'Москва',
@@ -30,180 +30,198 @@ const initialSearchFormState: SearchFormState = {
 	departureDate: '',
 	passengers: '1 пассажир'
 };
+type Flight = {
+	airline: string;
+	price: number;
+	currency: string;
+	isDirect: boolean;
+	duration: string;
+	departure: {
+		time: string;
+		airport: string;
+	};
+	arrival: {
+		time: string;
+		airport: string;
+	};
+	class: string;
+	detailsLink: string;
+};
 
-const FlightCard = ({ flight }) => {
-	return (
+type FlightCardProps = {
+	flight: Flight;
+};
+const FlightCard = ({ flight }: FlightCardProps) => (
+	<div
+		style={{
+			border: '1px solid #e0e0e0',
+			borderRadius: '8px',
+			padding: '16px',
+			marginTop: 20,
+			backgroundColor: '#ffffff',
+			boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+			maxWidth: '400px'
+		}}>
 		<div
 			style={{
-				border: '1px solid #e0e0e0',
-				borderRadius: '8px',
-				padding: '16px',
-				marginTop: 20,
-				backgroundColor: '#ffffff',
-				boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-				maxWidth: '400px'
+				display: 'flex',
+				justifyContent: 'space-between',
+				alignItems: 'center',
+				marginBottom: '12px'
 			}}>
-			<div
+			<span
 				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					marginBottom: '12px'
+					fontSize: '18px',
+					fontWeight: 'bold',
+					color: '#333'
 				}}>
+				{flight.airline}
+			</span>
+			<span
+				style={{
+					fontSize: '20px',
+					fontWeight: 'bold',
+					color: '#000'
+				}}>
+				от {flight.price} {flight.currency}
+			</span>
+		</div>
+
+		<div
+			style={{
+				display: 'flex',
+				alignItems: 'center',
+				marginBottom: '16px',
+				color: '#666',
+				fontSize: '14px'
+			}}>
+			{flight.isDirect && (
 				<span
 					style={{
-						fontSize: '18px',
+						backgroundColor: '#e8f5e8',
+						color: '#2e7d32',
+						padding: '4px 8px',
+						borderRadius: '4px',
+						marginRight: '8px',
+						fontSize: '12px'
+					}}>
+					Прямой рейс
+				</span>
+			)}
+			<span>• {flight.duration}</span>
+		</div>
+
+		<div
+			style={{
+				display: 'flex',
+				justifyContent: 'space-between',
+				marginBottom: '16px'
+			}}>
+			<div style={{ textAlign: 'center' }}>
+				<div
+					style={{
+						fontSize: '12px',
+						color: '#666',
+						marginBottom: '4px'
+					}}>
+					ОТПРАВЛЕНИЕ
+				</div>
+				<div
+					style={{
+						fontSize: '16px',
 						fontWeight: 'bold',
 						color: '#333'
 					}}>
-					{flight.airline}
-				</span>
-				<span
-					style={{
-						fontSize: '20px',
-						fontWeight: 'bold',
-						color: '#000'
-					}}>
-					от {flight.price} {flight.currency}
-				</span>
-			</div>
-
-			<div
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					marginBottom: '16px',
-					color: '#666',
-					fontSize: '14px'
-				}}>
-				{flight.isDirect && (
-					<span
-						style={{
-							backgroundColor: '#e8f5e8',
-							color: '#2e7d32',
-							padding: '4px 8px',
-							borderRadius: '4px',
-							marginRight: '8px',
-							fontSize: '12px'
-						}}>
-						Прямой рейс
-					</span>
-				)}
-				<span>• {flight.duration}</span>
-			</div>
-
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					marginBottom: '16px'
-				}}>
-				<div style={{ textAlign: 'center' }}>
-					<div
-						style={{
-							fontSize: '12px',
-							color: '#666',
-							marginBottom: '4px'
-						}}>
-						ОТПРАВЛЕНИЕ
-					</div>
-					<div
-						style={{
-							fontSize: '16px',
-							fontWeight: 'bold',
-							color: '#333'
-						}}>
-						{flight.departure.time}
-					</div>
-					<div
-						style={{
-							fontSize: '14px',
-							color: '#666'
-						}}>
-						{flight.departure.airport}
-					</div>
+					{flight.departure.time}
 				</div>
-
-				<div style={{ textAlign: 'center' }}>
-					<div
-						style={{
-							fontSize: '12px',
-							color: '#666',
-							marginBottom: '4px'
-						}}>
-						ПРИБЫТИЕ
-					</div>
-					<div
-						style={{
-							fontSize: '16px',
-							fontWeight: 'bold',
-							color: '#333'
-						}}>
-						{flight.arrival.time}
-					</div>
-					<div
-						style={{
-							fontSize: '14px',
-							color: '#666'
-						}}>
-						{flight.arrival.airport}
-					</div>
-				</div>
-			</div>
-
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					paddingTop: '12px',
-					borderTop: '1px solid #e0e0e0'
-				}}>
-				<div>
-					<span
-						style={{
-							fontSize: '12px',
-							color: '#666',
-							marginRight: '8px'
-						}}>
-						КЛАСС
-					</span>
-					<span
-						style={{
-							fontSize: '14px',
-							color: '#333',
-							fontWeight: '500'
-						}}>
-						{flight.class}
-					</span>
-				</div>
-
 				<div
 					style={{
-						display: 'flex',
-						alignItems: 'center',
-						gap: '16px'
+						fontSize: '14px',
+						color: '#666'
 					}}>
-					<a
-						href={flight.detailsLink}
-						style={{
-							fontSize: '14px',
-							color: '#1976d2',
-							textDecoration: 'none'
-						}}>
-						Подробнее
-					</a>
-					<Button
-						style={{
-							fontWeight: '500'
-						}}>
-						Выбрать
-					</Button>
+					{flight.departure.airport}
+				</div>
+			</div>
+
+			<div style={{ textAlign: 'center' }}>
+				<div
+					style={{
+						fontSize: '12px',
+						color: '#666',
+						marginBottom: '4px'
+					}}>
+					ПРИБЫТИЕ
+				</div>
+				<div
+					style={{
+						fontSize: '16px',
+						fontWeight: 'bold',
+						color: '#333'
+					}}>
+					{flight.arrival.time}
+				</div>
+				<div
+					style={{
+						fontSize: '14px',
+						color: '#666'
+					}}>
+					{flight.arrival.airport}
 				</div>
 			</div>
 		</div>
-	);
-};
+
+		<div
+			style={{
+				display: 'flex',
+				justifyContent: 'space-between',
+				alignItems: 'center',
+				paddingTop: '12px',
+				borderTop: '1px solid #e0e0e0'
+			}}>
+			<div>
+				<span
+					style={{
+						fontSize: '12px',
+						color: '#666',
+						marginRight: '8px'
+					}}>
+					КЛАСС
+				</span>
+				<span
+					style={{
+						fontSize: '14px',
+						color: '#333',
+						fontWeight: '500'
+					}}>
+					{flight.class}
+				</span>
+			</div>
+
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					gap: '16px'
+				}}>
+				<a
+					href={flight.detailsLink}
+					style={{
+						fontSize: '14px',
+						color: '#1976d2',
+						textDecoration: 'none'
+					}}>
+					Подробнее
+				</a>
+				<Button
+					style={{
+						fontWeight: '500'
+					}}>
+					Выбрать
+				</Button>
+			</div>
+		</div>
+	</div>
+);
 
 const ServicesPage = () => {
 	const [active, setActive] = useState<ButtonKey>('tickets');
@@ -263,7 +281,7 @@ const ServicesPage = () => {
 		}));
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		console.log('Отправка формы:', formState);
 
