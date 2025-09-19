@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { QRCodeCanvas } from 'qrcode.react';
+
 import type { User } from '@/entities/user/model/types';
 import Button from '@/shared/ui/Button/Button';
 import Input from '@/shared/ui/Input/Input';
@@ -98,7 +100,15 @@ const InvitePage = () => {
 
 			<div className={styles.qrWrapper}>
 				<Subtitle>QR-код для приглашения</Subtitle>
-				<div className={styles.qr}>QR</div>
+				<div className={styles.qr}>
+					<QRCodeCanvas
+						value='https://t-travel-together.netlify.app'
+						size={150}
+						bgColor='#ffffff'
+						fgColor='#000000'
+						level='H'
+					/>
+				</div>
 				<SecondaryText>
 					Покажите QR-код друзьям для быстрого присоединения
 				</SecondaryText>
