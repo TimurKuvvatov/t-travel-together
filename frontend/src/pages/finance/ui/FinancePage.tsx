@@ -81,6 +81,7 @@ const FinancePage = () => {
 								className={styles.statItem}>
 								<div className={styles.statLabel}>
 									<div
+										className={styles.colorIndicator}
 										style={{
 											backgroundColor: item.color,
 											width: '20px',
@@ -154,7 +155,8 @@ const FinancePage = () => {
 										height: '20px',
 										borderRadius: '5px',
 										marginRight: '8px'
-									}}></div>
+									}}
+								/>
 								<span>{item.name}</span>
 							</div>
 							<span className={styles.statValue}>{item.value}%</span>
