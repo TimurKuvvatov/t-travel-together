@@ -157,7 +157,7 @@ const DebtItemInAllDebts = ({ debt }: DebtItemInAllDebtsProps) => (
 				{debt.date}
 			</span>
 
-			<Button>Детали</Button>
+			<Button style={{ width: 'auto' }}>Детали</Button>
 		</div>
 	</div>
 );
