@@ -39,15 +39,29 @@ const MainPage = () => {
 		{
 			id: '1',
 			firstName: 'Тимур',
-			lastName: 'Не помню',
-			phone: '+7 123 456-37-89',
+			lastName: 'Кувватов',
+			phone: '+7 923 456-37-89',
 			createdAt: new Date()
 		},
 		{
-			id: '1',
+			id: '2',
 			firstName: 'Гриша',
-			lastName: 'Не помню',
-			phone: '+7 123 435-67-89',
+			lastName: 'Вербицкий',
+			phone: '+7 923 435-67-11',
+			createdAt: new Date()
+		},
+		{
+			id: '3',
+			firstName: 'Никита',
+			lastName: 'Посканной',
+			phone: '+7 983 435-67-11',
+			createdAt: new Date()
+		},
+		{
+			id: '4',
+			firstName: 'Вячеслав',
+			lastName: 'Зварич',
+			phone: '+7 999 435-67-11',
 			createdAt: new Date()
 		}
 	];
