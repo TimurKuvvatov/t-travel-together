@@ -98,7 +98,7 @@ const DebtItem = ({ debt }: DebtItemProps) => {
 					style={{
 						backgroundColor: isOwedToYou ? '#27AE60' : '#ff3b30',
 						color: 'white',
-						width: 'auto',
+						width: 'auto'
 					}}>
 					{isOwedToYou ? 'Напомнить' : 'Вернуть'}
 				</Button>
